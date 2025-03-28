@@ -1,5 +1,5 @@
 import app from "./app.js";
-import connectDb from "./src/database/db.connection.js";
+import connectDb from "./database/db.connection.js";
 
 const DB_CONNECTION_URL = "mongodb://127.0.0.1:27017/blog";
 
