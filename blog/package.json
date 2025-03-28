@@ -3,13 +3,30 @@
   "name": "blog",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "start": "nodemon indesx.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "blog",
+    "application"
+  ],
+  "author": "hiluf",
   "license": "ISC",
-  "description": "",
+  "description": "This is a simple blog application built with Node.js and Express. It allows users to create, read, update, and delete blog posts. The application uses MongoDB as the database to store blog posts and user information. The application also includes user authentication using bcryptjs for password hashing.",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "express": "^4.21.2",
-    "mongoose": "^8.13.0"
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.0",
+    "validator": "^13.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
