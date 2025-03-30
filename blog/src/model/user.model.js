@@ -60,7 +60,7 @@ userSchema.methods.comparePassword = async function (password) {
 };
 
 //check if email is unique
-userSchema.statics.isEmailUsed = async function (email) {
+userSchema.statics.is_email_used = async function (email) {
   const user = await this.findOne({ email });
   return !!user;
 };
