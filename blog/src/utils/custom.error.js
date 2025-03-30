@@ -4,5 +4,4 @@ class CustomError extends Error {
     this.message = message;
   }
 }
-
 export default CustomError;
