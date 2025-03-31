@@ -10,7 +10,11 @@ const generate_token = async (id, user_name, expires) => {
     iat: DateTime.now().toUnixInteger(),
     exp: expires.toUnixInteger(),
   };
-  return sign(payload, secret);
+  try {
+    return sign(payload, secret);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const verify_token = async (token) => {
