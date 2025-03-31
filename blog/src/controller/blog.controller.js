@@ -16,6 +16,7 @@ const delete_post = handle_promise_error(async (req, res) => {
   const { message, deleted_blog } = await delete_blog(id);
   res.status(202).json({ message, deleted_blog });
 });
+
 const edit_post = handle_promise_error(async (req, res) => {
   const { id, data } = req.body;
   const { message, updated_blog } = await edit_blog(id, data);
@@ -26,4 +27,5 @@ const get_posts = handle_promise_error(async (req, res) => {
   const posts = await get_all_blogs();
   res.status(200).json({ posts });
 });
+
 export { post_blog, delete_post, edit_post, get_posts };
