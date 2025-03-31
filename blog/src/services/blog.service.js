@@ -10,11 +10,11 @@ const create_blog = async (body) => {
 };
 
 const delete_blog = async (id) => {
-  const blog = await Blog.findByIdAndDelete(id);
-  if (!blog) {
+  const deleted_blog = await Blog.findByIdAndDelete(id);
+  if (!deleted_blog) {
     throw new CustomError(400, "unable to delete blog");
   }
-  return { message: "blog deleted successfully", blog: blog };
+  return { message: "blog deleted successfully", deleted_blog: deleted_blog };
 };
 
 const edit_blog = async (id, data) => {
