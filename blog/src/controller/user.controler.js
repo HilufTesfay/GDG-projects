@@ -4,7 +4,7 @@ import handle_promise_error from "../utils/error.handler.js";
 //signup middleware
 const signup_user = handle_promise_error(async (req, res) => {
   const { message, user } = await signup(req.body);
-  res.status(200).json(message, user);
+  res.status(200).json({ message, user });
 });
 
 export { signup_user };

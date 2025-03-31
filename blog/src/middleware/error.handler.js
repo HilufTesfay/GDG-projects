@@ -4,6 +4,7 @@ import CustomError from "../utils/custom.error.js";
 const convert_error = async (error, req, res, next) => {
   if (error instanceof CustomError) return next(error);
   else {
+    console.log(error);
     return next(new CustomError(500, "Something went Wrong"));
   }
 };

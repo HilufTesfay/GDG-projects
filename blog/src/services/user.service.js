@@ -4,7 +4,7 @@ import CustomError from "../utils/custom.error.js";
 //This function signup user
 const signup = async (body) => {
   const { email } = body;
-  const is_email_taken = User.is_email_used(email);
+  const is_email_taken = await User.is_email_used(email);
   if (is_email_taken) {
     throw new CustomError(400, "This Email is used");
   }
@@ -12,6 +12,7 @@ const signup = async (body) => {
   if (!user) {
     throw new CustomError(400, "unable to create user");
   }
+
   return { message: "user created successfully", user: user };
 };
 
