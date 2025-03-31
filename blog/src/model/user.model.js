@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
+import CustomError from "../utils/custom.error.js";
 
 //define user schema
 const userSchema = new mongoose.Schema(
@@ -35,7 +36,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide a password"],
       minLength: [6, "Password should be greater than 6 characters"],
-      select: false,
     },
     blogs: [
       {
@@ -56,7 +56,12 @@ userSchema.pre("save", async function (next) {
 
 //compare password with hashed password
 userSchema.methods.comparePassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
+  try {
+    return await bcrypt.compare(password, this.password);
+  } catch (error) {
+    console.log(error);
+    throw new CustomError(500, "internal error");
+  }
 };
 
 //check if email is unique

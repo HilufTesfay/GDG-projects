@@ -2,6 +2,7 @@ import User from "../model/user.model.js";
 import CustomError from "../utils/custom.error.js";
 import { generate_token } from "./token.service.js";
 import { DateTime } from "luxon";
+
 //This function signup user
 const signup = async (body) => {
   const { email } = body;
@@ -19,7 +20,7 @@ const signup = async (body) => {
 
 // This function enable the user to signin
 const signin = async (email, password) => {
-  const user = await User.findOne(email);
+  const user = await User.findOne({ email });
   if (!user) {
     throw new CustomError(403, "incorrect email or password");
   }

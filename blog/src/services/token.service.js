@@ -1,6 +1,6 @@
-import { sign, verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { DateTime } from "luxon";
-
+const { sign, verify } = jwt;
 const secret = "1234567891054321";
 
 const generate_token = async (id, user_name, expires) => {
@@ -17,8 +17,8 @@ const generate_token = async (id, user_name, expires) => {
   }
 };
 
-const verify_token = async (token) => {
-  const token = token.split(" ")[1];
+const verify_token = async (header) => {
+  const token = header.split(" ")[1];
   const payload = verify(token, secret);
   const { sub, user_name } = payload;
   if (!sub || !user_name) {
