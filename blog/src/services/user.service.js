@@ -31,6 +31,8 @@ const signin = async (email, password) => {
   const token = await generate_token(user.id, user.name, expires);
   return { message: "login successfully", accessToken: token };
 };
-const signout = async () => {};
+const signout = () => {
+  return { message: "signout successfully" }; //practically this revokes all saved referesh tokens
+};
 
-export { signup };
+export { signup, signin, signout };
